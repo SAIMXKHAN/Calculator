@@ -13,7 +13,9 @@ function deleteLastCharacter() {
 
 function calculate() {
   try {
-    const result = eval(display.value);
+    const sanitizedValue = display.value.replace(/×/g, "*").replace(/÷/g, "/");
+    const result = eval(sanitizedValue);
+    // const result = eval(display.value);
     if (display.value.includes("0/0") || result === Infinity ||result === -Infinity) {
       display.value = "";
       display.placeholder = "Error: Invalid operation";
@@ -43,4 +45,5 @@ function appendToDisplay(input) {
   }else {
     display.value += input;
   }
+  
 };
