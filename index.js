@@ -7,6 +7,7 @@ function appendToDisplay(input) {
 function clearDisplay() {
   display.value = "";
 };
+
 function deleteLastCharacter() {
   display.value = display.value.slice(0, -1);
 };
@@ -15,8 +16,8 @@ function calculate() {
   try {
     const sanitizedValue = display.value.replace(/×/g, "*").replace(/÷/g, "/");
     const result = eval(sanitizedValue);
-    // const result = eval(display.value);
-    if (display.value.includes("0/0") || result === Infinity ||result === -Infinity) {
+   
+    if (display.value.includes("0÷0") || result === Infinity || result === -Infinity) {
       display.value = "";
       display.placeholder = "Error: Invalid operation";
     }else if (isNaN(result)) {
@@ -45,5 +46,4 @@ function appendToDisplay(input) {
   }else {
     display.value += input;
   }
-  
 };
